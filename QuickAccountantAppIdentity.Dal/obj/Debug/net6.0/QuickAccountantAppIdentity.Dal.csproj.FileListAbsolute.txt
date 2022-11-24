@@ -1,0 +1,12 @@
+C:\Users\pedro\source\repos\QuickAccountantAppIdentity\QuickAccountantAppIdentity.Dal\bin\Debug\net6.0\QuickAccountantAppIdentity.Dal.deps.json
+C:\Users\pedro\source\repos\QuickAccountantAppIdentity\QuickAccountantAppIdentity.Dal\bin\Debug\net6.0\QuickAccountantAppIdentity.Dal.dll
+C:\Users\pedro\source\repos\QuickAccountantAppIdentity\QuickAccountantAppIdentity.Dal\bin\Debug\net6.0\QuickAccountantAppIdentity.Dal.pdb
+C:\Users\pedro\source\repos\QuickAccountantAppIdentity\QuickAccountantAppIdentity.Dal\obj\Debug\net6.0\QuickAccountantAppIdentity.Dal.csproj.AssemblyReference.cache
+C:\Users\pedro\source\repos\QuickAccountantAppIdentity\QuickAccountantAppIdentity.Dal\obj\Debug\net6.0\QuickAccountantAppIdentity.Dal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pedro\source\repos\QuickAccountantAppIdentity\QuickAccountantAppIdentity.Dal\obj\Debug\net6.0\QuickAccountantAppIdentity.Dal.AssemblyInfoInputs.cache
+C:\Users\pedro\source\repos\QuickAccountantAppIdentity\QuickAccountantAppIdentity.Dal\obj\Debug\net6.0\QuickAccountantAppIdentity.Dal.AssemblyInfo.cs
+C:\Users\pedro\source\repos\QuickAccountantAppIdentity\QuickAccountantAppIdentity.Dal\obj\Debug\net6.0\QuickAccountantAppIdentity.Dal.csproj.CoreCompileInputs.cache
+C:\Users\pedro\source\repos\QuickAccountantAppIdentity\QuickAccountantAppIdentity.Dal\obj\Debug\net6.0\QuickAccountantAppIdentity.Dal.dll
+C:\Users\pedro\source\repos\QuickAccountantAppIdentity\QuickAccountantAppIdentity.Dal\obj\Debug\net6.0\refint\QuickAccountantAppIdentity.Dal.dll
+C:\Users\pedro\source\repos\QuickAccountantAppIdentity\QuickAccountantAppIdentity.Dal\obj\Debug\net6.0\QuickAccountantAppIdentity.Dal.pdb
+C:\Users\pedro\source\repos\QuickAccountantAppIdentity\QuickAccountantAppIdentity.Dal\obj\Debug\net6.0\ref\QuickAccountantAppIdentity.Dal.dll
