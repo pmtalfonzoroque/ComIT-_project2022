@@ -1,0 +1,83 @@
+﻿@*<AuthorizeView>
+    <Authorized>
+        <a href="Identity/Account/Manage">Hello, @context.User.Identity?.Name!</a>
+        <form method="post" action="Identity/Account/LogOut">
+            <button type="submit" class="nav-link btn btn-link">Log out</button>
+        </form>
+    </Authorized>
+    <NotAuthorized>
+        <a href="Identity/Account/Register">Register</a>
+        <a href="Identity/Account/Login">Log in</a>
+    </NotAuthorized>
+</AuthorizeView>*@
+
+<ul class="navbar-nav" >
+    <AuthorizeView>
+        <Authorized>
+            <li class="nav-item" >
+                <a class="nav-link" href="Identity/Account/Manage" style="width: 316px; padding-right: 8px;">
+                    Hello @userEmail
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Identity/Account/LogOut" style="width:100px;padding-right: 8px;">
+                    <i class="fa-solid fa-person-walking-luggage"></i>Sign Out
+                </a>
+            </li>
+            @*<li class="nav-item">
+                <form method="post" action="Identity/Account/LogOut">
+                    <button type="submit" class="nav-link btn btn-link">Sign Out</button>
+                </form>
+            </li>*@
+
+            @*<a href="Identity/Account/Manage">Hello, @context.User.Identity?.Name!</a>
+            <form method="post" action="Identity/Account/LogOut">
+            <button type="submit" class="nav-link btn btn-link">Log out</button>
+            </form>*@
+        </Authorized>
+        <NotAuthorized>
+            <li class="nav-item" style="width: 100px;">
+                <a class="nav-link" href="Identity/Account/Register">
+                    <i class="fa-sharp fa-solid fa-cash-register"></i> Register
+                </a>
+                @*<Navlink class= "nav-link text-gray" href="Identity/Account/Register">                
+                    <i class="fa-sharp fa-solid fa-cash-register"></i> Register
+                </NavLink>*@
+            </li>
+
+            <li class="nav-item" style="width: 100px;">
+                <a class="nav-link" href="Identity/Account/Login">
+                    <i class="fa-solid fa-person-booth"></i> Log In
+                </a>
+
+                @*<Navlink class= "nav-link text-gray" href="Identity/Account/Login">                
+                    <i class="fa-solid fa-person-booth"></i> Log In
+                </NavLink>*@
+            </li>
+
+
+        </NotAuthorized>
+    </AuthorizeView>
+</ul>
+
+@code {
+    private AuthenticationState authenticationState;
+    private string userEmail;
+
+
+    [CascadingParameter]
+    private Task<AuthenticationState> AuthenticationStateTask { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        authenticationState = await AuthenticationStateTask;
+
+        if (authenticationState.User.Identity.IsAuthenticated)
+        {
+            userEmail = authenticationState.User.Identity.Name;
+        }
+
+        await base.OnInitializedAsync();
+    }
+}

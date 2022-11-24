@@ -1,0 +1,149 @@
+﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #e3f2fd;">
+        
+        <div class="container-fluid">
+            
+            <a class="navbar-brand" href="/">
+            <img src="/image/logo.JPG" class="d-inline-block align-top rounded-circle border border-primary" alt="">
+                Quick Accountant App
+            </a>
+            <button class="navbar-toggler" type="button" @onclick="ToggleNavMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>          
+
+            <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+               
+                <div class="Navbar-nav d-flex flex-grow-1">
+                @*<div class="Navbar-nav flex-row">*@
+                <AuthorizeView Roles="Customer">
+                        <Authorized >
+                            <li class="nav-item d-flex">
+                                <NavLink class="nav-link " href="expenses">
+                                    <i class="fa-solid fa-receipt"></i> Expenses
+                                </NavLink>
+                            </li>
+                            <li class="nav-item d-flex">
+                                <NavLink class="nav-link " href="incomes">
+                                    <i class="fa-solid fa-hand-holding-dollar"></i> Income
+                                </NavLink>
+                            </li>
+                           
+                        </Authorized>
+                    </AuthorizeView>
+
+                <AuthorizeView Roles="SysAdmin">
+                        <Authorized>
+                        <li class="nav-item d-flex">
+                            <NavLink class="nav-link " href="sysadmin">
+                                <i class="fa-solid fa-screwdriver-wrench"></i> 
+                            </NavLink>
+                        </li>
+                        <li class="nav-item d-flex dropdown">
+                            <a href="#" class="nav-link   dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user-gear"></i> System Admin</a>
+                            <div class="dropdown-menu">
+                                <a href="sysadmin/users" class="dropdown-item">User</a>
+                                <a href="#" class="dropdown-item">Assign Roles</a>
+                                <a href="#" class="dropdown-item">Inbox</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item">Request</a>
+                            </div>
+                        </li>
+                        </Authorized>
+                    
+                </AuthorizeView>
+
+                <AuthorizeView Roles="BussinessManager">
+                    <Authorized>
+                        <li class="nav-item d-flex">
+                            <NavLink class="nav-link " href="manager">
+                                <i class="fa-solid fa-house-laptop"></i>
+                            </NavLink>
+                        </li>
+                        <li class="nav-item d-flex dropdown">
+                            <a href="#" class="nav-link   dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-people-roof"></i>Manager</a>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">Subscriptions</a>
+                                <a href="#" class="dropdown-item">Inventory</a>
+                                <a href="#" class="dropdown-item">Sales</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="manager/graphics" class="dropdown-item">Graphics</a>
+                            </div>
+                        </li>
+                    </Authorized>
+                    
+                </AuthorizeView>
+
+                  
+
+
+            </div>
+         </div>
+    </div>
+    <LoginDisplay />
+</nav>
+@*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-secondary border-bottom box-shadow mb-3">
+    <a class="navbar-brand" href="/">Accountant App</a>
+    <button class="navbar-toggler" type="button" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="expenses">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Expenses
+                </NavLink>
+            </li>
+            
+            <AuthorizeView Roles="SysAdmin">
+                <Authorized>
+                    <li class="nav-item">
+                        <a class="nav-link text-gray" href="/expenses">
+                            <i class="fa-solid fa-medal"></i> Expenses
+                            <i class="fa-sharp fa-solid fa-cash-register"> Expenses </i>
+                        </a>
+                    </li>
+                </Authorized>
+            </AuthorizeView>
+
+
+            <AuthorizeView Roles="StoreManager">
+                <Authorized>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user-gear"></i> System Admin</a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">Inbox</a>
+                            <a href="#" class="dropdown-item">Drafts</a>
+                            <a href="#" class="dropdown-item">Sent Items</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">Trash</a>
+                        </div>
+                    </li>
+                </Authorized>
+            </AuthorizeView>
+
+        </ul>
+    </div>
+    <LoginDisplay />
+</nav>*@
+
+@*@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}*@
+@code {
+    bool collapseNavMenu = true;
+
+    string baseMenuClass = "navbar-collapse d-sm-inline-flex flex-sm-row-reverse";
+
+    string NavMenuCssClass => baseMenuClass + (collapseNavMenu ? " collapse" : "");
+
+    void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
