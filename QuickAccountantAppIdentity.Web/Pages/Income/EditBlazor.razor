@@ -1,0 +1,111 @@
+﻿@attribute [Authorize(Roles = "Customer")]
+@page "/incomes/edit/{id:int}"
+@using QuickAccountantAppIdentity.Dal.Enum
+ 
+@if (IncomeRecords != null)
+{
+    <div class="row">
+        <div class="col-lg-9">
+            <h1>@IncomeRecords.CreatedDate </h1>
+        </div>
+        <div class="col-lg-3 text-right">
+            <a class="btn btn-secondary btn-sm" href="/incomes" role="button">Go Back To List</a>
+        </div>
+    </div>
+
+    <EditForm Model="@IncomeRecords" OnValidSubmit="@SubmitIncome">
+
+        @*Each division is for the field in the Model of the ExpenseRecords including the Enum
+    ************ Need to be finished************@
+
+        <div class="row">
+            <div class="col-3">
+                <label for="Date">Date</label>
+                <InputDate id="Date" class="form-control" @bind-Value="IncomeRecords.CreatedDate" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <label for="Place">Place </label>
+                <InputText id="Place" class="form-control" @bind-Value="IncomeRecords.Place" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <label for="total">Total</label>
+                <InputNumber id="total" class="form-control" @bind-Value="IncomeRecords.Total" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <label for="comment">Comment</label>
+                <InputText id="comment" class="form-control" @bind-Value="IncomeRecords.Comment" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <label>IncomeRecordType</label>
+                <InputSelect @bind-Value="IncomeRecords.IncomeTypeID" class="form-control">
+                    @if (IncomeTypes != null)
+                    {
+                        @foreach (var incomeType in IncomeTypes)
+                        {
+                            <option value="@incomeType.Id">@incomeType.Name</option>
+                        }
+                    }
+                </InputSelect>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <label for="ExpenseGroup">Expense Group</label>
+                <InputSelect id="ExpenseGroup" @bind-Value="IncomeRecords.IncomeGroup" class="form-select">
+                    <option value="@IncomeGroup.Earned">Earned</option>
+                    <option value="@IncomeGroup.Passive">Passive</option>
+                    <option value="@IncomeGroup.Profit">Profit</option>
+                    <option value="@IncomeGroup.Portfolio">Portfolio</option>
+
+                </InputSelect>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <label for="PayMethod">PayMethod</label>
+                <InputSelect id="PayMethod" @bind-Value="IncomeRecords.PayMethod" class="form-select">
+                    <option value="@PayMethod.Visa">Visa</option>
+                    <option value="@PayMethod.MasterCard">MasterCard</option>
+                    <option value="@PayMethod.AmericanExpress">AmericanExpress</option>
+                    <option value="@PayMethod.Debit">Debit</option>
+                    <option value="@PayMethod.Cash">Cash</option>
+                    <option value="@PayMethod.Cuppon">Cuppon</option>
+                    <option value="@PayMethod.Check">Check</option>
+                    <option value="@PayMethod.Transfer">Transfer</option>
+                    <option value="@PayMethod.Other">Other</option>
+
+                </InputSelect>
+            </div>
+        </div>
+
+        @*<div class="row">
+            <div class="col-3">
+                <label for="user">User</label>
+                <InputNumber id="user" class="form-control" @bind-Value="ExpenseRecords.UserId" />
+            </div>
+        </div>*@
+
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </EditForm>
+}
+
+
+
+@code {
+
+}

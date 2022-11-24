@@ -1,0 +1,110 @@
+﻿@attribute [Authorize(Roles = "Customer")]
+@page "/expenses/create"
+@using QuickAccountantAppIdentity.Dal.Enum
+ 
+<div class="row">
+    <div class="col-lg-9">
+        <h1>Create</h1>
+    </div>
+    <div class="col-lg-3 text-right">
+        <a class="btn btn-secondary btn-sm" href="/expenses" role="button">Go Back To List</a>
+    </div>
+</div>
+ 
+@if (ExpenseRecords != null) // variable called ExpenseRecord, which is a object
+{
+    <fieldset>
+        <legend>Create an Expense</legend>
+        <EditForm Model="@ExpenseRecords" OnValidSubmit= "@SubmitExpense">
+
+            @*Each division is for the field in the Model of the ExpenseRecords including the Enum 
+            ************ Need to be finished************@
+            <div class="row">
+                <div class="col-3">
+                    <label for="Date">Date</label>
+                    <InputDate id="Date" class="form-control" @bind-Value="ExpenseRecords.CreatedDate" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <label for="Place">Place </label>
+                    <InputText id="Place" class="form-control" @bind-Value="ExpenseRecords.Place" />
+                </div>
+            </div>
+
+            <div class="row"> 
+                <div class="col-3">
+                    <label for="total">Total</label>
+                    <InputNumber id="total" class="form-control" @bind-Value="ExpenseRecords.Total" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <label for="comment">Comment</label>
+                    <InputText id = "comment" class="form-control" @bind-Value="ExpenseRecords.Comment" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                <label>ExpenseRecordType</label>
+                <InputSelect @bind-Value="ExpenseRecords.ExpenseTypeID" class="form-control">
+                    @if (ExpenseTypes != null)
+                    {
+                        @foreach (var expenseType in ExpenseTypes)
+                        {
+                            <option value="@expenseType.Id">@expenseType.Name</option>
+                        }
+                    }
+                </InputSelect>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <label for="ExpenseGroup">Expense Group</label>
+                    <InputSelect id="ExpenseGroup" @bind-Value="ExpenseRecords.ExpenseGroup" class="form-select">
+                        <option value="@ExpenseGroup.Variable">Variable</option>
+                        <option value="@ExpenseGroup.Fixed">Fixed</option>
+                        <option value="@ExpenseGroup.Intermittent">Intermittent</option>
+                        <option value="@ExpenseGroup.Discretionary">Discretionary</option>
+                    
+                    </InputSelect>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <label for="PayMethod">PayMethod</label>
+                    <InputSelect id="PayMethod" @bind-Value="ExpenseRecords.PayMethod" class="form-select">
+                        <option value="@PayMethod.Visa">Visa</option>
+                        <option value="@PayMethod.MasterCard">MasterCard</option>
+                        <option value="@PayMethod.AmericanExpress">AmericanExpress</option>
+                        <option value="@PayMethod.Debit">Debit</option>
+                        <option value="@PayMethod.Cash">Cash</option>
+                        <option value="@PayMethod.Cuppon">Cuppon</option>
+                        <option value="@PayMethod.Check">Check</option>
+                        <option value="@PayMethod.Transfer">Transfer</option>
+                        <option value="@PayMethod.Other">Other</option>
+                        
+                    </InputSelect>
+                </div>
+            </div>
+
+            @*<div class="row">
+                <div class="col-3">
+                    <label for="user">User</label>
+                    <InputNumber id="user" class="form-control" @bind-Value="ExpenseRecords.UserId" />
+                </div>
+            </div>*@
+
+                      
+            <button type="submit" class="btn btn-primary">Create</button>
+        </EditForm>
+    </fieldset>
+    
+    
+}
+

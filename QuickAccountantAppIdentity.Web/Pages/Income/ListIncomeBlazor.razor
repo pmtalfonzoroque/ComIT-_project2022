@@ -1,0 +1,86 @@
+﻿@attribute [Authorize(Roles = "Customer")]
+@page "/incomes"
+@page "/incomes/list"
+
+<div class="row">
+    <div class="col-lg-9">
+        <h1>Income Records</h1>
+    </div>
+    <div class="col-lg-3 text-right">
+        <a class="btn btn-success btn-sm" href="/incomes/create" role="button">Create New</a>
+    </div>
+</div>
+
+@if (IncomeRecords != null && IncomeRecords.Count > 0) // HTML code
+{
+    
+    <table class="table table-bordered table-striped table-sm">
+        @* header of the table*@
+ 	    <thead> 
+            <tr>
+                <th>Id</th>
+                <th>CreatedDate</th>
+                <th>Total</th>
+                @*<th>GST</th>
+                <th>PST</th>*@
+                <th>Place</th>
+                <th>Comment</th>
+                <th>IncomeType</th>
+                <th>IncomeGroup</th>
+                <th>PayMethod</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in IncomeRecords) // this is the body of the table & partial C# code
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.CreatedDate</td>
+                    <td>@item.Total</td>
+                    <td>@item.Place</td>
+                    <td>@item.Comment</td>
+                    <td>@item.IncomeType?.Name</td>
+                    <td>@item.IncomeGroup</td>
+                    <td>@item.PayMethod</td>
+                        <td class="text-right">
+                            <a class="btn btn-primary btn-sm" href="/incomes/detail/@item.Id" role="button">Details</a>
+                            <a class="btn btn-secondary btn-sm" href="/incomes/edit/@item.Id" role="button">Edit</a>
+                        <button class="btn btn-danger btn-sm" @onclick="@(e => DeleteIncome (item.Id))" role="button">Delete</button>
+                        </td>
+                </tr>
+            }
+            
+        </tbody>
+    </table>
+}
+else if (IncomeRecords != null && IncomeRecords.Count == 0)
+{
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="alert alert-info">
+                <span>Please notice that there are no Incomes recorded so far.</span>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row justify-content-center">
+        <div class="col">
+            <img src="/image/loading.gif" />
+        </div>
+    </div>
+}
+               
+<ConfirmationModal @ref="myConfirmationModal" Id="deleteConfirmation" Title="Confirm Delete" onConfirm="DeleteConfirmedClick">
+    <div>
+        Are you sure you want to Delete the Income @income?.IncomeGroup of  @income?.Total  <span class="fas fa-question fa-lg"></span>
+    </div>
+</ConfirmationModal>
+
+
+
+@code {
+
+}

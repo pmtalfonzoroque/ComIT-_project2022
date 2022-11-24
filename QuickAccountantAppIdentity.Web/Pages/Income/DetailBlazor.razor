@@ -1,0 +1,40 @@
+﻿@attribute [Authorize(Roles = "Customer")]
+@page "/incomes/detail/{id:int}"
+
+@if (IncomeRecord != null)
+{
+    <div class="row">
+        <div class="col-lg-9">
+            <h1>@IncomeRecord.CreatedDate</h1>
+        </div>
+        <div class="col-lg-3 text-right">
+            <a class="btn btn-secondary btn-sm" href="/incomes" role="button">Go Back To List</a>
+        </div>
+    </div>
+ 
+    <table class="table">
+        <tbody>
+        <tr>
+                <th scope="row">Total</th>
+                <td>@IncomeRecord.Total</td>
+            </tr>
+            <tr>
+                <th scope="row">IncomeType</th>
+                <td>@IncomeRecord.IncomeType?.Name</td>
+            </tr>
+            <tr>
+                <th scope="row">Place</th>
+                <td>@IncomeRecord.Place</td>
+            </tr>
+            <tr>
+                <th scope="row">PayMethod</th>
+                <td>@IncomeRecord.PayMethod</td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+
+@code {
+
+}
